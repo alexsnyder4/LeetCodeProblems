@@ -1,0 +1,43 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class CanPlaceFlowers {
+    public boolean canPlaceFlowers(int[] flowerbed, int n) {
+        int nextValue;
+        int value;
+        int prevValue;
+        int possPlots = 0;
+        boolean prevPlaced = false;
+        for(int i = 0; i < flowerbed.length; i ++)
+        {
+            value = flowerbed[i];
+
+            if(i == 0)
+                prevValue = 0;
+            else
+                prevValue = flowerbed[i - 1];
+            if (i == flowerbed.length - 1)
+                nextValue = 0;
+            else
+                nextValue = flowerbed[i + 1];
+
+            if(prevValue + nextValue + value == 0 && prevPlaced == false)
+            {
+                prevPlaced = true;
+                possPlots++;
+            }
+            else
+            {
+                prevPlaced = false;
+            }
+        }
+        if(possPlots < n)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }  
+}
